@@ -3,12 +3,13 @@ import { errorHandler } from "../utils/error.js";
 
 export const createCourse = async (req, res, next) => {
   try {
-    const { title, instructor, price, image, description } = req.body;
+    const { title, instructor, price, image, description, howToStart } =
+      req.body;
     const newTitle = title
       .split(" ")
       .join("-")
       .toLowerCase()
-      .replace(/[^a-zA-Z0-9-]/g, "");
+      .replace(/[^a-zA-Z0-9-\u0900-\u097F]/g, "");
     const newPost = new Course({
       title,
       instructor,
@@ -16,6 +17,7 @@ export const createCourse = async (req, res, next) => {
       image,
       description,
       slug: newTitle,
+      howToStart,
       // userId: req.user.id,
     });
     try {

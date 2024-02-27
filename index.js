@@ -25,7 +25,7 @@ app.use(
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {
-    console.log("CONNECTE HAI TA");
+    console.log("DONE");
   })
   .catch((error) => {
     console.log("ERROR in connection", error);
